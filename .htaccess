@@ -1,0 +1,161 @@
+# ============================================================
+#  SwiftCart — Apache .htaccess
+#  Optimised for cPanel shared hosting (Apache 2.4 + mod_rewrite)
+#  Last updated: 2026-05-16
+# ============================================================
+
+
+# ── Engine ────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ── 1. Force HTTPS ─────────────────────────────────────────
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ── 2. Redirect www → non-www ──────────────────────────────
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # ── 3. Clean URLs: remove .html extension ──────────────────
+  # Redirect /page.html → /page (301 permanent)
+  RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+  RewriteRule ^ /%1 [R=301,L,NE]
+
+  # Internally rewrite /page → /page.html to serve the file
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^/]+)/?$ $1.html [L]
+</IfModule>
+
+
+# ── Custom error pages ────────────────────────────────────────
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+
+# ── MIME types ────────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType application/javascript          .js .mjs
+  AddType text/css                        .css
+  AddType image/svg+xml                   .svg .svgz
+  AddType image/webp                      .webp
+  AddType image/avif                      .avif
+  AddType application/manifest+json      .webmanifest
+  AddType font/woff2                      .woff2
+  AddType font/woff                       .woff
+</IfModule>
+
+
+# ── Compression ───────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE \
+    text/html \
+    text/css \
+    text/plain \
+    text/xml \
+    text/javascript \
+    application/javascript \
+    application/x-javascript \
+    application/json \
+    application/manifest+json \
+    application/xml \
+    image/svg+xml
+
+  # Don't compress already-compressed formats
+  SetEnvIfNoCase Request_URI \.(?:gif|jpg|jpeg|png|webp|avif|woff2)$ no-gzip
+</IfModule>
+
+
+# ── Browser caching ───────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML — short cache; we push updates frequently
+  ExpiresByType text/html                 "access plus 1 hour"
+
+  # CSS & JS — fingerprint before bumping to 1 year
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff2               "access plus 1 year"
+  ExpiresByType font/woff                "access plus 1 year"
+
+  # Images
+  ExpiresByType image/svg+xml            "access plus 1 year"
+  ExpiresByType image/png                "access plus 1 year"
+  ExpiresByType image/webp               "access plus 1 year"
+  ExpiresByType image/avif               "access plus 1 year"
+  ExpiresByType image/jpeg               "access plus 1 year"
+  ExpiresByType image/gif                "access plus 1 year"
+  ExpiresByType image/x-icon             "access plus 1 year"
+
+  # Manifest
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType text/xml                 "access plus 1 day"
+</IfModule>
+
+
+# ── Security headers ─────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Prevent MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # XSS filter (legacy browsers)
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Limit browser feature access
+  Header always set Permissions-Policy \
+    "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # HSTS — only enable AFTER SSL is confirmed working
+  # Header always set Strict-Transport-Security \
+  #   "max-age=31536000; includeSubDomains; preload"
+
+  # Cache-Control for HTML pages
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # Immutable cache for hashed assets (CSS/JS with version in filename)
+  <FilesMatch "\.(css|js|woff2|woff)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+
+# ── Block access to sensitive files ──────────────────────────
+<FilesMatch "(^\.htaccess|\.htpasswd|\.env|\.git|\.gitignore|\.DS_Store)$">
+  Require all denied
+</FilesMatch>
+
+# Block direct access to doc files
+<FilesMatch "\.(md|json)$">
+  <RequireAll>
+    Require all granted
+  </RequireAll>
+</FilesMatch>
+
+# Block raw JSON access except manifest
+<Files "manifest.json">
+  Require all granted
+</Files>
+
+
+# ── Directory listing off ─────────────────────────────────────
+Options -Indexes
+
+
+# ── ETags (disable on shared hosting — inode-based ETags break on load-balanced servers) ──
+FileETag None
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>

@@ -1,0 +1,221 @@
+/* ============================================================
+   SwiftCart — Button System
+   Gradient primary, solid secondary, ghost, and outline variants.
+   All transitions are smooth. Hover lifts slightly.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   BASE BUTTON
+---------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+  padding: 14px 26px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background    var(--duration-fast) var(--ease-standard),
+    border-color  var(--duration-fast) var(--ease-standard),
+    color         var(--duration-fast) var(--ease-standard),
+    box-shadow    var(--duration-fast) var(--ease-standard),
+    transform     var(--duration-fast) var(--ease-spring);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-brand-glow);
+  outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------
+   PRIMARY — Gradient red (the main CTA)
+---------------------------------------------------------- */
+.button--primary {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  box-shadow: var(--shadow-brand-sm);
+  border-color: transparent;
+}
+
+.button--primary:hover {
+  background: var(--gradient-brand-vivid);
+  box-shadow: var(--shadow-brand);
+}
+
+.button--primary:active {
+  box-shadow: var(--shadow-brand-sm);
+}
+
+
+/* ----------------------------------------------------------
+   SECONDARY — White with border (light sections)
+---------------------------------------------------------- */
+.button--secondary {
+  background: var(--color-surface);
+  border-color: var(--color-line);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-xs);
+}
+
+.button--secondary:hover {
+  border-color: rgba(10, 10, 15, 0.22);
+  box-shadow: var(--shadow-card);
+}
+
+
+/* ----------------------------------------------------------
+   GHOST — Text-only, soft hover (light sections)
+---------------------------------------------------------- */
+.button--ghost {
+  color: var(--color-ink-muted);
+  border-color: transparent;
+}
+
+.button--ghost:hover {
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+}
+
+
+/* ----------------------------------------------------------
+   OUTLINE DARK — Transparent with border (dark sections)
+---------------------------------------------------------- */
+.button--outline-dark {
+  border-color: var(--glass-border);
+  color: var(--color-dark-ink);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.button--outline-dark:hover {
+  border-color: var(--glass-border-strong);
+  background: var(--glass-bg-mid);
+  box-shadow: var(--shadow-glass);
+}
+
+
+/* ----------------------------------------------------------
+   GLASS — Frosted (dark sections only)
+---------------------------------------------------------- */
+.button--glass {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-dark-ink);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.button--glass:hover {
+  background: var(--glass-bg-mid);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-glass);
+}
+
+
+/* ----------------------------------------------------------
+   LIGHT — White button (on dark/gradient backgrounds)
+---------------------------------------------------------- */
+.button--light {
+  background: var(--color-surface);
+  color: var(--color-brand-dark);
+  border-color: transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.button--light:hover {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-dark);
+  color: var(--color-brand);
+}
+
+
+/* ----------------------------------------------------------
+   SIZES
+---------------------------------------------------------- */
+.button--sm {
+  min-height: 42px;
+  padding: 11px 20px;
+  font-size: 14px;
+}
+
+.button--lg {
+  min-height: 58px;
+  padding: 18px 36px;
+  font-size: 16px;
+}
+
+.button--icon {
+  width: 50px;
+  min-height: 50px;
+  padding: 0;
+}
+
+.button--icon.button--sm {
+  width: 42px;
+  min-height: 42px;
+}
+
+
+/* ----------------------------------------------------------
+   FULL WIDTH
+---------------------------------------------------------- */
+.button--full {
+  width: 100%;
+}
+
+
+/* ----------------------------------------------------------
+   BUTTON GROUP
+---------------------------------------------------------- */
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.button-group--center {
+  justify-content: center;
+}
+
+.button-group--stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 480px) {
+  .button-group:not(.button-group--inline) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group:not(.button-group--inline) .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

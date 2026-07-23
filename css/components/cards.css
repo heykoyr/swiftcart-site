@@ -1,0 +1,290 @@
+/* ============================================================
+   SwiftCart — Card System
+   Standard cards (light sections), glass cards (dark sections),
+   role cards, process cards, trust cards, stat cards.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   BASE CARD — Light sections
+---------------------------------------------------------- */
+.card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  padding: var(--space-6);
+}
+
+.card--warm {
+  background: var(--gradient-card-warm);
+  border-color: rgba(232, 57, 29, 0.08);
+}
+
+.card--muted {
+  background: var(--color-page);
+  border-color: var(--color-line-soft);
+}
+
+
+/* ----------------------------------------------------------
+   INTERACTIVE CARD — Hover lift
+---------------------------------------------------------- */
+.card--interactive {
+  transition:
+    transform    var(--duration-base) var(--ease-spring),
+    box-shadow   var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard);
+  cursor: default;
+}
+
+.card--interactive:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(232, 57, 29, 0.18);
+}
+
+
+/* ----------------------------------------------------------
+   GLASS CARD — Dark sections only
+---------------------------------------------------------- */
+.card--glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-glass);
+  color: var(--color-dark-ink);
+}
+
+.card--glass-interactive {
+  transition:
+    transform    var(--duration-base) var(--ease-spring),
+    background   var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    box-shadow   var(--duration-base) var(--ease-standard);
+}
+
+.card--glass-interactive:hover {
+  transform: translateY(-5px);
+  background: var(--glass-bg-mid);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-glass-lg);
+}
+
+/* Glass card text helpers */
+.card--glass p {
+  color: var(--color-dark-muted);
+}
+
+.card--glass h3,
+.card--glass h4 {
+  color: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   ICON CARD — Card with a leading icon or number
+---------------------------------------------------------- */
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-size: 20px;
+  margin-bottom: var(--space-5);
+  flex-shrink: 0;
+}
+
+.card-icon--dark {
+  background: var(--glass-bg-mid);
+  color: var(--color-dark-ink);
+  border: 1px solid var(--glass-border);
+}
+
+.card-icon--success {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+/* Number badge variant */
+.card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: var(--space-5);
+}
+
+.card-number--dark {
+  background: var(--glass-bg-mid);
+  color: var(--color-dark-muted);
+  border: 1px solid var(--glass-border);
+}
+
+
+/* ----------------------------------------------------------
+   BADGE SYSTEM
+---------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-ink-muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge--brand {
+  background: var(--color-brand-soft);
+  border-color: rgba(232, 57, 29, 0.14);
+  color: var(--color-brand);
+}
+
+.badge--success {
+  background: var(--color-success-soft);
+  border-color: rgba(16, 185, 129, 0.20);
+  color: var(--color-success);
+}
+
+.badge--warning {
+  background: var(--color-warning-soft);
+  border-color: rgba(245, 158, 11, 0.20);
+  color: var(--color-warning);
+}
+
+.badge--info {
+  background: var(--color-info-soft);
+  border-color: rgba(59, 130, 246, 0.20);
+  color: var(--color-info);
+}
+
+/* Dark section badge */
+.badge--dark {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-dark-muted);
+}
+
+.badge--dark-brand {
+  background: rgba(232, 57, 29, 0.14);
+  border-color: rgba(232, 57, 29, 0.24);
+  color: var(--color-brand-light);
+}
+
+/* Dot indicator within badges */
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+}
+
+.badge-dot--pulse {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+
+/* ----------------------------------------------------------
+   STAT CARD — Key metrics
+---------------------------------------------------------- */
+.stat-card {
+  padding: var(--space-6);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+}
+
+/* Dark section stat */
+.section--dark .stat-value,
+.section--dark-gradient .stat-value {
+  color: var(--color-dark-ink);
+}
+
+.section--dark .stat-label,
+.section--dark-gradient .stat-label {
+  color: var(--color-dark-muted);
+}
+
+
+/* ----------------------------------------------------------
+   CHECKLIST — Used in feature sections
+---------------------------------------------------------- */
+.check-list {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0;
+  margin: var(--space-5) 0 var(--space-8);
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 32px;
+  color: var(--color-ink-muted);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Checkmark tick */
+.check-list li::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-success-soft);
+}
+
+.check-list li::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 7px;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--color-success);
+  border-bottom: 2px solid var(--color-success);
+  transform: rotate(-45deg);
+}
+
+/* Dark section checklist */
+.section--dark .check-list li,
+.section--dark-gradient .check-list li {
+  color: var(--color-dark-muted);
+}
+
+.section--dark .check-list li::before {
+  background: rgba(16, 185, 129, 0.16);
+}

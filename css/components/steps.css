@@ -1,0 +1,273 @@
+/* ============================================================
+   SwiftCart — Steps / Process Component
+   Used by: become-a-rider.html, partner-with-us.html, and any
+   page that needs a numbered step-by-step flow.
+
+   Variants:
+   - .steps--vertical   (default)
+   - .steps--horizontal (side-by-side on desktop)
+   - .steps--dark       (inside dark sections)
+   - .steps--compact    (tighter spacing)
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   VERTICAL STEPS  (default)
+---------------------------------------------------------- */
+.steps {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+
+/* Scoped to .steps deliberately. The marketing pages (css/pages/home.css) have
+   their own, unrelated `.step` inside `.step-grid` whose children are a bare
+   <b>/<h3>/<p>. When this rule was unscoped it still applied there — home.css
+   only re-declares position and padding-top, so `display:grid` and
+   `grid-template-columns:52px 1fr` leaked through and auto-placed the <p> into
+   the 52px column, wrapping the body copy one character per line on
+   riders/vendors/customers/companies. Keep the `.steps` prefix. */
+.steps .step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 var(--space-5);
+  position: relative;
+}
+
+/* Vertical connector line — runs through the left column */
+.steps .step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 52px;
+  left: 25px;               /* centre of the 52px column */
+  width: 2px;
+  height: calc(100% - 20px);
+  background: var(--color-line);
+  border-radius: var(--radius-full);
+}
+
+
+/* ── Step number badge ────────────────────────────────── */
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-brand-soft);
+  border: 2px solid rgba(232, 57, 29, 0.15);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--color-brand);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition:
+    background   var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    box-shadow   var(--duration-base) var(--ease-standard);
+}
+
+/* Active / completed number */
+.step--active .step-num,
+.step--done .step-num {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow-brand-sm);
+}
+
+.step--done .step-num::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  background: var(--gradient-brand);
+  border-radius: 50%;
+  color: #fff;
+}
+
+
+/* ── Step content ─────────────────────────────────────── */
+.step-content {
+  padding-bottom: var(--space-10);
+}
+
+.step:last-child .step-content {
+  padding-bottom: 0;
+}
+
+.step-content h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+  padding-top: 13px;          /* optically align with badge centre */
+  letter-spacing: -0.01em;
+}
+
+.step-content p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+.step-content .step-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: var(--space-3);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  background: var(--color-page);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+}
+
+
+/* ----------------------------------------------------------
+   COMPACT VARIANT
+---------------------------------------------------------- */
+.steps--compact .step-num {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.steps--compact .step:not(:last-child)::before {
+  top: 40px;
+  left: 19px;
+}
+
+.steps--compact .step {
+  grid-template-columns: 40px 1fr;
+}
+
+.steps--compact .step-content {
+  padding-bottom: var(--space-7);
+}
+
+.steps--compact .step-content h3 {
+  font-size: 16px;
+  padding-top: 9px;
+}
+
+.steps--compact .step-content p {
+  font-size: 14px;
+}
+
+
+/* ----------------------------------------------------------
+   HORIZONTAL STEPS  (3–4 steps side by side)
+---------------------------------------------------------- */
+.steps--horizontal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+}
+
+.steps--horizontal .step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  grid-template-columns: unset;
+}
+
+/* Replace vertical line with horizontal connector */
+.steps--horizontal .step:not(:last-child)::before {
+  top: 26px;                   /* badge centre */
+  left: 52px;
+  width: calc(100% - 40px);
+  height: 2px;
+  background: var(--color-line);
+  border-radius: var(--radius-full);
+}
+
+.steps--horizontal .step-content {
+  padding-bottom: 0;
+}
+
+.steps--horizontal .step-content h3 {
+  padding-top: 0;
+  font-size: 16px;
+}
+
+
+/* ----------------------------------------------------------
+   DARK SECTION VARIANT
+---------------------------------------------------------- */
+.steps--dark .step:not(:last-child)::before {
+  background: var(--color-dark-line);
+}
+
+.steps--dark .step-num {
+  background: var(--glass-bg-mid);
+  border-color: var(--glass-border);
+  color: var(--color-brand-light);
+}
+
+.steps--dark .step--active .step-num,
+.steps--dark .step--done .step-num {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow-brand-sm);
+}
+
+.steps--dark .step-content h3 {
+  color: var(--color-dark-ink);
+}
+
+.steps--dark .step-content p {
+  color: var(--color-dark-muted);
+}
+
+.steps--dark .step-content .step-tag {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-dark-soft);
+}
+
+.steps--horizontal.steps--dark .step:not(:last-child)::before {
+  background: var(--color-dark-line);
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Horizontal collapses back to vertical */
+  .steps--horizontal {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .steps--horizontal .step {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 var(--space-5);
+    flex-direction: unset;
+  }
+
+  .steps--horizontal .step:not(:last-child)::before {
+    top: 52px;
+    left: 25px;
+    width: 2px;
+    height: calc(100% - 20px);
+  }
+
+  .steps--horizontal .step-content {
+    padding-bottom: var(--space-8);
+  }
+
+  .steps--horizontal .step-content h3 {
+    padding-top: 13px;
+  }
+}

@@ -1,0 +1,360 @@
+/* ============================================================
+   SwiftCart — Site Header
+   Two modes:
+   1. Transparent over dark hero (default on dark-hero pages)
+   2. Solid white with shadow on light pages / after scroll
+
+   Add data-header-dark to <header> on dark-hero pages.
+   JS adds .is-scrolled after 10px scroll.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   BASE HEADER
+---------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    border-color     var(--duration-base) var(--ease-standard),
+    box-shadow       var(--duration-base) var(--ease-standard);
+}
+
+/* Light-page default: white, subtle border */
+.site-header {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--color-line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.site-header.is-scrolled {
+  border-color: transparent;
+  box-shadow: var(--shadow-header);
+}
+
+/* Dark-hero page: transparent, white text, no border */
+.site-header[data-header-dark] {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header[data-header-dark].is-scrolled {
+  background: #0D0D14; /* fully opaque — white text needs a reliably dark backdrop */
+  border-color: var(--color-dark-line);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.36);
+}
+
+
+/* ----------------------------------------------------------
+   NAV SHELL — Inner row
+---------------------------------------------------------- */
+.nav-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+  gap: var(--space-6);
+}
+
+
+/* ----------------------------------------------------------
+   BRAND LOCKUP
+---------------------------------------------------------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--gradient-brand);
+  box-shadow: var(--shadow-brand-sm);
+  flex-shrink: 0;
+}
+
+.brand-mark svg,
+.brand-mark img {
+  width: 22px;
+  height: 22px;
+}
+
+/* Brand wordmark letter fallback */
+.brand-mark-letter {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-ink);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+/* Light-mode: explicit dark brand name */
+.site-header:not([data-header-dark]) .brand-name {
+  color: var(--color-ink);
+}
+
+/* Dark header overrides */
+.site-header[data-header-dark] .brand-name {
+  color: var(--color-dark-ink);
+}
+
+.site-header[data-header-dark].is-scrolled .brand-name {
+  color: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   DESKTOP NAV
+---------------------------------------------------------- */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.desktop-nav a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+
+/* Light-mode: solid dark text — no ambiguity */
+.site-header:not([data-header-dark]) .desktop-nav a {
+  color: var(--color-ink);
+}
+
+.site-header:not([data-header-dark]) .desktop-nav a:hover,
+.site-header:not([data-header-dark]) .desktop-nav a[aria-current="page"] {
+  color: var(--color-brand);
+}
+
+/* Generic hover (fallback) */
+.desktop-nav a:hover,
+.desktop-nav a[aria-current="page"] {
+  color: var(--color-ink);
+}
+
+/* Dark header overrides */
+.site-header[data-header-dark] .desktop-nav a {
+  color: var(--color-dark-muted);
+}
+
+.site-header[data-header-dark] .desktop-nav a:hover,
+.site-header[data-header-dark] .desktop-nav a[aria-current="page"] {
+  color: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   NAV ACTIONS (right side)
+---------------------------------------------------------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+
+/* Light-mode: solid dark text */
+.site-header:not([data-header-dark]) .nav-link {
+  color: var(--color-ink);
+}
+
+.nav-link:hover {
+  color: var(--color-ink);
+}
+
+.site-header:not([data-header-dark]) .nav-link:hover {
+  color: var(--color-brand);
+}
+
+.site-header[data-header-dark] .nav-link {
+  color: var(--color-dark-muted);
+}
+
+.site-header[data-header-dark] .nav-link:hover {
+  color: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE MENU BUTTON
+---------------------------------------------------------- */
+.menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  flex-shrink: 0;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background   var(--duration-fast) var(--ease-standard);
+}
+
+.menu-button:hover {
+  border-color: var(--color-brand);
+}
+
+/* Hamburger lines */
+.menu-button .bar {
+  position: absolute;
+  width: 18px;
+  height: 1.5px;
+  border-radius: var(--radius-full);
+  background: var(--color-ink);
+  transition: transform var(--duration-base) var(--ease-spring);
+}
+
+.menu-button .bar:first-child { transform: translateY(-5px); }
+.menu-button .bar:last-child  { transform: translateY(5px); }
+
+.menu-button[aria-expanded="true"] .bar:first-child { transform: rotate(45deg); }
+.menu-button[aria-expanded="true"] .bar:last-child  { transform: rotate(-45deg); }
+
+/* Light-mode hamburger: dark bars on white background */
+.site-header:not([data-header-dark]) .menu-button {
+  border-color: var(--color-line);
+  background: var(--color-surface);
+}
+
+.site-header:not([data-header-dark]) .menu-button .bar {
+  background: var(--color-ink);
+}
+
+/* Dark header variant */
+.site-header[data-header-dark] .menu-button {
+  border-color: var(--color-dark-line);
+  background: var(--glass-bg);
+}
+
+.site-header[data-header-dark] .menu-button .bar {
+  background: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE MENU DROPDOWN
+---------------------------------------------------------- */
+.mobile-menu {
+  position: fixed;
+  top: 82px;
+  left: var(--space-5);
+  right: var(--space-5);
+  z-index: var(--z-nav);
+  display: none;
+  flex-direction: column;
+  gap: var(--space-1);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-3);
+
+  /* Entry animation state */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px) scale(0.98);
+  transform-origin: top center;
+  transition:
+    opacity   var(--duration-base) var(--ease-out-expo),
+    transform var(--duration-base) var(--ease-out-expo);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-ink);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color      var(--duration-fast) var(--ease-standard);
+}
+
+.mobile-menu a:not(.button):hover,
+.mobile-menu a[aria-current="page"] {
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+}
+
+.mobile-menu .button {
+  margin-top: var(--space-2);
+  width: 100%;
+}
+
+.mobile-menu-divider {
+  height: 1px;
+  background: var(--color-line);
+  margin: var(--space-2) 0;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .desktop-nav,
+  .nav-actions {
+    display: none;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .mobile-menu {
+    left: var(--space-4);
+    right: var(--space-4);
+  }
+}

@@ -1,0 +1,210 @@
+/* ============================================================
+   SwiftCart — Site Footer
+   Dark background. Premium structured layout.
+   "SwiftCart is a product of Koyr ❤️" in footer bottom.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   FOOTER SHELL
+---------------------------------------------------------- */
+.site-footer {
+  background: var(--color-dark);
+  color: var(--color-dark-ink);
+  padding-top: var(--space-20);
+}
+
+
+/* ----------------------------------------------------------
+   FOOTER GRID — Brand wide + 4 link columns
+---------------------------------------------------------- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(4, 1fr);
+  gap: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+/* Brand column */
+.footer-brand .brand-name {
+  color: var(--color-dark-ink);
+}
+
+.footer-brand .brand-mark {
+  background: var(--gradient-brand);
+  box-shadow: var(--shadow-brand-sm);
+}
+
+.footer-tagline {
+  margin-top: var(--space-5);
+  color: var(--color-dark-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 280px;
+}
+
+/* Location badge */
+.footer-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-4);
+  padding: 8px 14px;
+  border: 1px solid var(--color-dark-line);
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  color: var(--color-dark-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-location-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse-success 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* App store badges area */
+.footer-app-links {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.footer-app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--color-dark-line);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  color: var(--color-dark-muted);
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    color        var(--duration-fast) var(--ease-standard),
+    background   var(--duration-fast) var(--ease-standard);
+}
+
+.footer-app-badge:hover {
+  border-color: var(--glass-border-strong);
+  background: var(--glass-bg-mid);
+  color: var(--color-dark-ink);
+}
+
+
+/* ----------------------------------------------------------
+   FOOTER LINK COLUMNS
+---------------------------------------------------------- */
+.footer-col h2 {
+  margin-bottom: var(--space-4);
+  color: var(--color-dark-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer-col a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-dark-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.footer-col a:hover {
+  color: var(--color-dark-ink);
+}
+
+.footer-col a:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ----------------------------------------------------------
+   FOOTER BOTTOM BAR
+---------------------------------------------------------- */
+.footer-bottom {
+  border-top: 1px solid var(--color-dark-line);
+  padding: var(--space-6) 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+  color: var(--color-dark-soft);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-dark-muted);
+}
+
+/* Koyr credit */
+.footer-koyr {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-dark-soft);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-koyr .heart {
+  color: var(--color-brand);
+  font-size: 14px;
+}
+
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-tagline {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}

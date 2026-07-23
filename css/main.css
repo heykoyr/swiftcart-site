@@ -1,0 +1,47 @@
+/* ============================================================
+   SwiftCart — Main CSS Entry Point
+   Load order matters. Do not reorder.
+
+   Layer order rationale:
+     1. Tokens      → custom properties, no output
+     2. Reset       → browser normalisation
+     3. Typography  → base type + .prose system
+     4. Animations  → @keyframes and stagger delays
+     5. Layout      → containers, grid, header, footer, sections
+     6. Components  → composable UI blocks
+     7. Utilities   → single-purpose overrides (highest specificity wins)
+
+   Page-specific stylesheets (e.g. css/pages/home.css) are loaded
+   via <link> in the relevant HTML file AFTER this sheet.
+   ============================================================ */
+
+/* ── 1. Tokens ──────────────────────────────────────────── */
+@import url("base/tokens.css");
+
+/* ── 2. Reset ───────────────────────────────────────────── */
+@import url("base/reset.css");
+
+/* ── 3. Typography ──────────────────────────────────────── */
+@import url("base/typography.css");
+
+/* ── 4. Animations ──────────────────────────────────────── */
+@import url("base/animations.css");
+
+/* ── 5. Layout ──────────────────────────────────────────── */
+@import url("layout/grid.css");
+@import url("layout/header.css");
+@import url("layout/footer.css");
+@import url("layout/sections.css");
+
+/* ── 6. Components ──────────────────────────────────────── */
+@import url("components/buttons.css");
+@import url("components/cards.css");
+@import url("components/banners.css");
+@import url("components/steps.css");
+@import url("components/alerts.css");
+@import url("components/forms.css");
+@import url("components/accordions.css");
+@import url("components/legal.css");
+
+/* ── 7. Utilities  (last → highest specificity) ─────────── */
+@import url("base/utilities.css");

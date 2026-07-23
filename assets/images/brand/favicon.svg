@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- On-brand SwiftCart mark: forest sparkle on a lime rounded square,
+       matching .sc-brand-mark in the marketing site. Replaces the old
+       red-gradient "S", which used the deprecated app palette. -->
+  <rect width="64" height="64" rx="15" ry="15" fill="#d9ef58"/>
+  <path transform="translate(2 6.7) scale(2.5)"
+        d="m12 2 2.1 6.2L20 10l-5.9 1.8L12 18l-2.1-6.2L4 10l5.9-1.8L12 2Z"
+        fill="#064e3b"/>
+</svg>

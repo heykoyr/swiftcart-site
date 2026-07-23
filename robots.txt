@@ -1,0 +1,24 @@
+# ============================================================
+#  SwiftCart — robots.txt
+#  https://swiftcartapp.co/robots.txt
+#  Last updated: 2026-05-16
+# ============================================================
+
+User-agent: *
+Allow: /
+
+# Block raw documentation / internal planning files
+Disallow: /docs/
+
+# Block build artefacts if they ever appear
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Block assets that don't need indexing
+Disallow: /assets/images/og/
+
+# Sitemap location
+Sitemap: https://swiftcartapp.co/sitemap.xml
+
+# Polite crawl delay (helps shared hosting stay healthy)
+Crawl-delay: 2

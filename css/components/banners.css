@@ -1,0 +1,287 @@
+/* ============================================================
+   SwiftCart — Banners, Feature Bands, CTA Bands
+   Full-width content blocks and sectioned feature layouts.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   FEATURE BAND — Split content + visual block
+---------------------------------------------------------- */
+.feature-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-2xl);
+  background: var(--color-surface);
+  overflow: hidden;
+  padding: var(--space-12);
+}
+
+.feature-band--warm {
+  background: var(--gradient-card-warm);
+  border-color: rgba(232, 57, 29, 0.08);
+}
+
+/* Glass feature band for dark sections */
+.feature-band--glass {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* Visual slot inside a .feature-band — named .band-visual to avoid
+   collision with page-level .feature-panel layout grids in home.css */
+.band-visual {
+  position: relative;
+  min-height: 380px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.band-visual--grid-bg {
+  background:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px),
+    var(--color-page);
+  background-size: 36px 36px;
+}
+
+.band-visual--grid-bg-dark {
+  background:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+    var(--color-dark-2);
+  background-size: 36px 36px;
+}
+
+/* Feature copy column */
+.feature-copy p {
+  color: var(--color-ink-muted);
+  font-size: 17px;
+  margin-bottom: var(--space-5);
+}
+
+.section--dark .feature-copy p {
+  color: var(--color-dark-muted);
+}
+
+
+/* ----------------------------------------------------------
+   CTA BAND — Full width gradient call to action
+---------------------------------------------------------- */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background: var(--gradient-cta-band);
+  padding: var(--space-16) var(--space-12);
+  color: #ffffff;
+}
+
+/* Layered sheen on CTA band */
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 10% 30%, rgba(0,0,0,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Mesh noise texture (subtle) */
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.cta-band__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-band h2 {
+  max-width: 720px;
+  margin-bottom: var(--space-8);
+  color: #ffffff;
+}
+
+.cta-band .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cta-band p {
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 18px;
+  max-width: 560px;
+  margin-bottom: var(--space-8);
+}
+
+
+/* ----------------------------------------------------------
+   TRUST STRIP — Social proof / platform signals row
+---------------------------------------------------------- */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-ink-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.trust-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-soft);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+/* Dark section trust strip */
+.section--dark .trust-item,
+.section--hero .trust-item {
+  color: var(--color-dark-muted);
+}
+
+.section--dark .trust-item-icon {
+  background: var(--glass-bg-mid);
+  border: 1px solid var(--glass-border);
+}
+
+.trust-strip-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--color-line);
+  flex-shrink: 0;
+}
+
+.section--dark .trust-strip-divider {
+  background: var(--color-dark-line);
+}
+
+
+/* ----------------------------------------------------------
+   APP DOWNLOAD BADGES GROUP
+---------------------------------------------------------- */
+.app-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow   var(--duration-fast) var(--ease-standard),
+    transform    var(--duration-fast) var(--ease-spring);
+}
+
+.app-badge:hover {
+  border-color: var(--color-brand);
+  box-shadow: var(--shadow-brand-sm);
+  transform: translateY(-2px);
+}
+
+/* Dark section app badges */
+.section--dark .app-badge,
+.section--hero .app-badge {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-dark-ink);
+}
+
+.section--dark .app-badge:hover,
+.section--hero .app-badge:hover {
+  background: var(--glass-bg-mid);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-glass);
+}
+
+.app-badge-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.app-badge-label {
+  display: grid;
+}
+
+.app-badge-label small {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.6;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.app-badge-label strong {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .feature-band {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .cta-band {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-band {
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    gap: var(--space-8);
+  }
+
+  .band-visual {
+    min-height: 280px;
+  }
+
+  .cta-band {
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .cta-band p {
+    font-size: 16px;
+  }
+}

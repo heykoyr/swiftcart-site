@@ -1,0 +1,400 @@
+/* ============================================================
+   SwiftCart — Typography System
+   Clash Display for headings, Satoshi for body.
+   Mobile-first scale. No vw units, no clamp trickery.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   DISPLAY — Hero statements only
+---------------------------------------------------------- */
+.text-display {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.00;
+  letter-spacing: -0.5px;
+}
+
+/* ----------------------------------------------------------
+   HEADINGS
+---------------------------------------------------------- */
+h1,
+.text-h1 {
+  font-family: var(--font-display);
+  margin-bottom: var(--space-5);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.3px;
+}
+
+h2,
+.text-h2 {
+  font-family: var(--font-display);
+  margin-bottom: var(--space-4);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.10;
+  letter-spacing: -0.2px;
+}
+
+h3,
+.text-h3 {
+  font-family: var(--font-display);
+  margin-bottom: var(--space-3);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+h4,
+.text-h4 {
+  margin-bottom: var(--space-2);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+h5,
+.text-h5 {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------------
+   BODY TEXT
+---------------------------------------------------------- */
+.text-body-xl {
+  font-size: 20px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.text-body-lg {
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.text-small {
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.text-xs {
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   LABELS & UTILITY TEXT
+---------------------------------------------------------- */
+
+/* Section eyebrow label */
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--space-3);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+/* Dark section overrides the eyebrow colour */
+.section--dark .eyebrow,
+.section--hero .eyebrow {
+  color: var(--color-brand-light);
+}
+
+/* Muted text helpers */
+.text-muted        { color: var(--color-ink-muted); }
+.text-soft         { color: var(--color-ink-soft); }
+.text-dark-muted   { color: var(--color-dark-muted); }
+.text-dark-soft    { color: var(--color-dark-soft); }
+.text-brand        { color: var(--color-brand); }
+.text-success      { color: var(--color-success); }
+
+/* ----------------------------------------------------------
+   PROSE — Rich content block for legal, support, and article pages.
+   Scope: applied to a single wrapper element, e.g. <article class="prose">.
+   All children are styled contextually — no need to add classes inside.
+---------------------------------------------------------- */
+
+.prose {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+  max-width: 72ch;
+}
+
+/* Headings within prose */
+.prose h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--color-ink);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-12);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.prose h1:first-child { margin-top: 0; }
+
+.prose h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  color: var(--color-ink);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-10);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  scroll-margin-top: 100px;
+}
+
+.prose h3 {
+  font-size: 19px;
+  color: var(--color-ink);
+  margin-bottom: var(--space-3);
+  margin-top: var(--space-8);
+  line-height: 1.25;
+}
+
+.prose h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+/* Body text */
+.prose p {
+  margin-bottom: var(--space-5);
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+/* Inline elements */
+.prose strong {
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.prose em {
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+.prose code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875em;
+  background: var(--color-page);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xs);
+  padding: 2px 6px;
+  color: var(--color-brand);
+}
+
+/* Links within prose */
+.prose a {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 57, 29, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-brand);
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-5);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+
+.prose li {
+  line-height: 1.7;
+  padding-left: var(--space-1);
+}
+
+.prose li::marker {
+  color: var(--color-brand);
+  font-weight: 700;
+}
+
+/* Nested list */
+.prose ul ul,
+.prose ol ol,
+.prose ul ol,
+.prose ol ul {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+/* Blockquote */
+.prose blockquote {
+  border-left: 4px solid var(--color-brand);
+  background: var(--color-brand-soft);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-4) var(--space-6);
+  margin: var(--space-6) 0;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.prose blockquote p { margin-bottom: 0; }
+
+/* Horizontal rule */
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: var(--space-10) 0;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-bottom: var(--space-6);
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-line);
+  line-height: 1.5;
+}
+
+.prose th {
+  font-weight: 800;
+  color: var(--color-ink);
+  background: var(--color-page);
+  white-space: nowrap;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.prose td { color: var(--color-ink-muted); }
+
+.prose tr:last-child td { border-bottom: none; }
+
+
+/* ----------------------------------------------------------
+   PROSE DARK — Same scoped system for dark section content
+---------------------------------------------------------- */
+.prose--dark {
+  color: var(--color-dark-muted);
+}
+
+.prose--dark h1,
+.prose--dark h2,
+.prose--dark h3,
+.prose--dark h4,
+.prose--dark strong,
+.prose--dark em {
+  color: var(--color-dark-ink);
+}
+
+.prose--dark a {
+  color: var(--color-brand-light);
+  text-decoration-color: rgba(255, 107, 53, 0.35);
+}
+
+.prose--dark a:hover {
+  text-decoration-color: var(--color-brand-light);
+}
+
+.prose--dark code {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-brand-light);
+}
+
+.prose--dark blockquote {
+  border-color: var(--color-brand-light);
+  background: rgba(232, 57, 29, 0.10);
+  color: var(--color-dark-muted);
+}
+
+.prose--dark hr { border-color: var(--color-dark-line); }
+
+.prose--dark th {
+  background: var(--color-dark-3);
+  color: var(--color-dark-ink);
+  border-color: var(--color-dark-line);
+}
+
+.prose--dark td { color: var(--color-dark-muted); border-color: var(--color-dark-line); }
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE SCALE — Mobile-first breakpoints
+---------------------------------------------------------- */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+  .text-display {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-display {
+    font-size: 44px;
+  }
+
+  h1,
+  .text-h1 {
+    font-size: 40px;
+    letter-spacing: -0.2px;
+  }
+
+  h2,
+  .text-h2 {
+    font-size: 32px;
+  }
+
+  h3,
+  .text-h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-display {
+    font-size: 36px;
+    line-height: 1.04;
+    letter-spacing: -0.2px;
+  }
+
+  h1,
+  .text-h1 {
+    font-size: 34px;
+  }
+
+  h2,
+  .text-h2 {
+    font-size: 28px;
+  }
+}

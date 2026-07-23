@@ -1,0 +1,134 @@
+/* ============================================================
+   SwiftCart — Accordion / FAQ Component
+   Native <details>/<summary> for accessibility.
+   Light and dark section variants.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   BASE ACCORDION
+---------------------------------------------------------- */
+.accordion-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.accordion-list details {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow   var(--duration-fast) var(--ease-standard);
+}
+
+.accordion-list details[open] {
+  border-color: rgba(232, 57, 29, 0.20);
+  box-shadow: var(--shadow-xs);
+}
+
+.accordion-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--color-ink);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+  user-select: none;
+}
+
+/* Remove default disclosure triangle */
+.accordion-list summary::-webkit-details-marker { display: none; }
+.accordion-list summary::marker { display: none; }
+
+/* Plus / minus icon */
+.accordion-list summary::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-page);
+  color: var(--color-brand);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  transition:
+    transform    var(--duration-base) var(--ease-spring),
+    background   var(--duration-fast) var(--ease-standard);
+}
+
+.accordion-list details[open] summary {
+  color: var(--color-brand);
+}
+
+.accordion-list details[open] summary::after {
+  content: "−";
+  background: var(--color-brand-soft);
+  transform: rotate(180deg);
+}
+
+/* Content area */
+.accordion-list details p,
+.accordion-list details .accordion-body {
+  padding: 0 var(--space-6) var(--space-5);
+  color: var(--color-ink-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ----------------------------------------------------------
+   NOTE — `.faq-list` is intentionally NOT styled here.
+   It belongs to the marketing system in css/pages/home.css, which renders the
+   open/close affordance as a real <svg class="icon"> inside each <summary> and
+   rotates it 45deg when open. This file used to ALSO style `.faq-list` and add
+   a `::after` pseudo-element containing "+" / "−", so every FAQ row rendered
+   TWO controls side by side (the SVG and the pseudo-element). Styling for
+   `.faq-list` must live in exactly one place — keep it in home.css.
+   `.accordion-list` above remains the design-system accordion for any page that
+   wants the pseudo-element style.
+---------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------
+   DARK SECTION ACCORDION
+---------------------------------------------------------- */
+.accordion-list--dark details {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.accordion-list--dark details[open] {
+  background: var(--glass-bg-mid);
+  border-color: rgba(232, 57, 29, 0.28);
+}
+
+.accordion-list--dark summary {
+  color: var(--color-dark-ink);
+}
+
+.accordion-list--dark summary::after {
+  background: var(--glass-bg-mid);
+  color: var(--color-brand-light);
+}
+
+.accordion-list--dark details[open] summary {
+  color: var(--color-brand-light);
+}
+
+.accordion-list--dark details[open] summary::after {
+  background: rgba(232, 57, 29, 0.16);
+}
+
+.accordion-list--dark details p {
+  color: var(--color-dark-muted);
+}

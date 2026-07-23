@@ -1,0 +1,525 @@
+/* ============================================================
+   SwiftCart — Legal Pages Shared Styles
+   Shared by: privacy.html, terms.html, vendor-terms.html, rider-terms.html
+   Loaded AFTER css/main.css in each legal page's <head>.
+
+   Scope:
+   - Legal hero / page-intro section
+   - Page-level layout composition
+   - Mobile TOC collapse and toggle
+   - Responsive overrides for the legal layout
+
+   Core legal component styles (TOC, article, table, callout)
+   live in css/components/legal.css — do not duplicate here.
+   ============================================================ */
+
+
+/* ── Legal page background ──────────────────────────────── */
+/* Legal pages are light-mode — white background, dark text  */
+body {
+  background-color: var(--color-surface);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   LEGAL HERO  — slim intro band at top of every legal page
+───────────────────────────────────────────────────────── */
+
+.legal-hero {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+  padding: var(--space-12) 0 var(--space-10);
+}
+
+/* Breadcrumb trail */
+.legal-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--color-ink-faint);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.legal-breadcrumb a {
+  color: var(--color-ink-faint);
+  text-decoration: none;
+  transition: color var(--duration-base) ease;
+}
+.legal-breadcrumb a:hover {
+  color: var(--color-brand);
+}
+
+.legal-breadcrumb-sep {
+  color: var(--color-ink-faint);
+  opacity: 0.5;
+  font-size: 11px;
+}
+
+.legal-breadcrumb-current {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+/* Document type badge */
+.legal-doc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 12px;
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+/* Page title */
+.legal-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-4);
+}
+
+/* Subtitle / intro sentence */
+.legal-hero-sub {
+  font-size: 16px;
+  color: var(--color-ink-muted);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0 0 var(--space-6);
+}
+
+/* Meta row — effective date, last updated */
+.legal-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 13px;
+  color: var(--color-ink-faint);
+}
+
+.legal-hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legal-hero-meta-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-brand);
+}
+
+/* Supplement note — "these terms are supplementary to..." */
+.legal-supplement-banner {
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-brand-soft);
+  border: 1px solid rgba(232, 57, 29, 0.15);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-ink-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.legal-supplement-banner strong {
+  color: var(--color-ink);
+}
+
+.legal-supplement-banner a {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 57, 29, 0.35);
+}
+.legal-supplement-banner a:hover {
+  text-decoration-color: var(--color-brand);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   LEGAL PAGE LAYOUT SECTION  — wraps TOC + article
+───────────────────────────────────────────────────────── */
+
+.legal-page-section {
+  padding: var(--space-12) 0 var(--space-20);
+  background: var(--color-surface);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE TOC  — collapsible accordion on small screens
+───────────────────────────────────────────────────────── */
+
+/* Mobile TOC toggle button — visible only on small screens */
+.legal-toc-toggle {
+  display: none;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  transition: background var(--duration-base) ease, border-color var(--duration-base) ease;
+}
+
+.legal-toc-toggle:hover {
+  background: var(--color-brand-soft);
+  border-color: rgba(232, 57, 29, 0.25);
+}
+
+.legal-toc-toggle-icon {
+  font-size: 16px;
+  color: var(--color-brand);
+  transition: transform var(--duration-base) ease;
+}
+
+.legal-toc-toggle[aria-expanded="true"] .legal-toc-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Mobile: TOC collapses */
+@media (max-width: 860px) {
+  .legal-layout--with-toc {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .legal-toc-toggle {
+    display: flex;
+  }
+
+  .legal-toc {
+    /* Override display:none set by components/legal.css at 1024px */
+    display: block;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    background: transparent;
+    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  /* TOC list hidden by default; shown when toggle fires */
+  .legal-toc > ol {
+    display: none;
+    margin-top: var(--space-3);
+  }
+
+  .legal-toc.is-open > ol {
+    display: grid;
+  }
+
+  .legal-hero {
+    padding: var(--space-8) 0 var(--space-7);
+  }
+
+  .legal-page-section {
+    padding: var(--space-8) 0 var(--space-14);
+  }
+}
+
+@media (max-width: 600px) {
+  .legal-hero-title {
+    font-size: 26px;
+  }
+
+  .legal-hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .legal-supplement-banner {
+    font-size: 13px;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   LEGAL CONTACT BOX  — overrides / enhancements
+───────────────────────────────────────────────────────── */
+
+.legal-contact-box h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-3);
+}
+
+.legal-contact-box p {
+  font-size: 15px;
+  color: var(--color-ink-muted);
+  margin: 0 0 var(--space-2);
+  line-height: 1.6;
+}
+
+.legal-contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-contact-box a {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 57, 29, 0.35);
+}
+
+.legal-contact-box a:hover {
+  text-decoration-color: var(--color-brand);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   LEGAL TABLE  — responsive + polished
+───────────────────────────────────────────────────────── */
+
+.legal-table {
+  overflow-x: auto;
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line);
+}
+
+.legal-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.legal-table thead {
+  background: var(--color-brand-soft);
+}
+
+.legal-table th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-brand);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(232, 57, 29, 0.15);
+  white-space: nowrap;
+}
+
+.legal-table td {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-ink-muted);
+  border-bottom: 1px solid var(--color-line);
+  line-height: 1.55;
+}
+
+.legal-table tr:last-child td {
+  border-bottom: none;
+}
+
+.legal-table tr:hover td {
+  background: rgba(0, 0, 0, 0.018);
+}
+
+/* First column emphasis */
+.legal-table td:first-child {
+  font-weight: 600;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   CROSS-LINK BAND  — "see also" box between legal docs
+───────────────────────────────────────────────────────── */
+
+.legal-crosslink {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  margin: var(--space-8) 0;
+  align-items: center;
+}
+
+.legal-crosslink-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.legal-crosslink-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.legal-crosslink-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: border-color var(--duration-base) ease, color var(--duration-base) ease,
+              background var(--duration-base) ease;
+}
+
+.legal-crosslink-link:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   ANCHOR SCROLL OFFSET
+   Legal sections have IDs that TOC links target.
+   Account for the sticky header (74px) + breathing room.
+───────────────────────────────────────────────────────── */
+.legal-section {
+  scroll-margin-top: calc(74px + var(--space-6));
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   PRINT STYLES
+   Clean, readable output for legal documents.
+───────────────────────────────────────────────────────── */
+@media print {
+  .site-header,
+  .site-footer,
+  .legal-breadcrumb,
+  .legal-toc,
+  .legal-toc-toggle,
+  .legal-crosslink,
+  .legal-contact-box {
+    display: none !important;
+  }
+
+  .legal-layout--with-toc {
+    display: block;
+  }
+
+  .legal-hero {
+    padding: 24pt 0 16pt;
+    border-bottom: 1pt solid #ccc;
+  }
+
+  .legal-hero-title {
+    font-size: 22pt;
+    color: #000;
+  }
+
+  .legal-hero-sub {
+    font-size: 10pt;
+    color: #444;
+  }
+
+  .legal-hero-meta {
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .legal-article .prose h2 {
+    font-size: 14pt;
+    color: #000;
+    page-break-after: avoid;
+    margin-top: 18pt;
+  }
+
+  .legal-article .prose h3 {
+    font-size: 11pt;
+    page-break-after: avoid;
+  }
+
+  .legal-article .prose p,
+  .legal-article .prose li {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .legal-supplement-banner {
+    border: 1pt solid #ccc;
+    print-color-adjust: exact;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #666;
+  }
+
+  /* Don't print href for internal links */
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   PROSE OVERRIDES for legal context
+   (supplement to base/typography.css .prose)
+───────────────────────────────────────────────────────── */
+
+.legal-article .prose h2 {
+  margin-top: var(--space-10);
+}
+
+.legal-article .prose h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.legal-article .prose ul li,
+.legal-article .prose ol li {
+  margin-bottom: var(--space-2);
+}
+
+/* Section divider within article */
+.legal-article .legal-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}

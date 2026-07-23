@@ -1,0 +1,133 @@
+/* ============================================================
+   SwiftCart — Grid & Container System
+   Three container widths, CSS grid helpers.
+   Always mobile-first.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   CONTAINERS
+---------------------------------------------------------- */
+.container,
+.container--wide,
+.container--narrow {
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container {
+  max-width: var(--container-default);
+  width: 100%;
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+  width: 100%;
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+  width: 100%;
+}
+
+
+/* ----------------------------------------------------------
+   BASE GRID
+---------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Asymmetric split — content + visual */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.split-grid--wide-left {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.split-grid--wide-right {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+/* Auto-fill card grids */
+.auto-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Flex row utility */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cluster--center {
+  justify-content: center;
+}
+
+/* Stack utility */
+.stack {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stack--sm { gap: var(--space-3); }
+.stack--lg { gap: var(--space-6); }
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+---------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-grid,
+  .split-grid--wide-left,
+  .split-grid--wide-right {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid--3,
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .container,
+  .container--wide,
+  .container--narrow {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+}

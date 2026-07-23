@@ -1,0 +1,197 @@
+/* ============================================================
+   SwiftCart Design Tokens
+   Single source of truth for all visual primitives.
+   Never hardcode values that exist here.
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+  ---------------------------------------------------------- */
+  --font-display: "Clash Display", "Satoshi", system-ui, -apple-system, sans-serif;
+  --font-sans:    "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+
+  /* ----------------------------------------------------------
+     BRAND — Core identity
+  ---------------------------------------------------------- */
+  --color-brand:        #E8391D;
+  --color-brand-dark:   #C42E14;
+  --color-brand-mid:    #FF5722;
+  --color-brand-light:  #FF6B35;
+  --color-brand-soft:   #FEF2F0;
+  --color-brand-glow:   rgba(232, 57, 29, 0.32);
+  --color-brand-glow-sm: rgba(232, 57, 29, 0.20);
+
+
+  /* ----------------------------------------------------------
+     GRADIENTS
+  ---------------------------------------------------------- */
+  --gradient-brand:          linear-gradient(135deg, #E8391D 0%, #FF5722 100%);
+  --gradient-brand-vivid:    linear-gradient(135deg, #E8391D 0%, #FF6B35 55%, #FF8C42 100%);
+  --gradient-brand-radial:   radial-gradient(ellipse at center, #FF5722 0%, #E8391D 100%);
+
+  /* Dark hero backgrounds */
+  --gradient-dark-hero:      linear-gradient(145deg, #0A0A0F 0%, #130808 55%, #0D0505 100%);
+  --gradient-dark-section:   linear-gradient(180deg, #0F0F14 0%, #0A0A0F 100%);
+
+  /* Ambient light bleed — the "orb" feel */
+  --gradient-orb-hero:       radial-gradient(ellipse 70% 60% at 72% 40%, rgba(232,57,29,0.22) 0%, rgba(232,57,29,0.06) 50%, transparent 75%);
+  --gradient-orb-secondary:  radial-gradient(ellipse 50% 50% at 20% 80%, rgba(255,87,34,0.12) 0%, transparent 65%);
+
+  /* Card & surface gradients */
+  --gradient-glass-border:   linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 100%);
+  --gradient-card-warm:      linear-gradient(135deg, #FFFFFF 0%, #FFF8F5 100%);
+  --gradient-cta-band:       linear-gradient(135deg, #E8391D 0%, #FF5722 60%, #FF6B35 100%);
+
+
+  /* ----------------------------------------------------------
+     LIGHT SURFACE SYSTEM (white/light sections)
+  ---------------------------------------------------------- */
+  --color-page:           #F8F8F8;
+  --color-surface:        #FFFFFF;
+  --color-surface-warm:   #FFF8F5;
+  --color-surface-2:      #F3F4F6;
+  --color-surface-raised: #F5F6F8; /* Slightly elevated light surface (cards, toggles) */
+
+  /* Light text & borders */
+  --color-ink:          #0A0A0F;
+  --color-ink-muted:    #4B5563;
+  --color-ink-soft:     #9CA3AF;
+  --color-ink-faint:    #C2C6CF; /* Very subtle — breadcrumbs, meta, labels */
+  --color-line:         #E5E7EB;
+  --color-line-soft:    #F0F1F3;
+
+
+  /* ----------------------------------------------------------
+     DARK SURFACE SYSTEM (dark sections & hero)
+  ---------------------------------------------------------- */
+  --color-dark:         #0A0A0F;
+  --color-dark-2:       #111118;
+  --color-dark-3:       #1A1A24;
+  --color-dark-4:       #22222E;
+
+  /* Dark text & borders */
+  --color-dark-ink:     #FFFFFF;
+  --color-dark-muted:   rgba(255, 255, 255, 0.62);
+  --color-dark-soft:    rgba(255, 255, 255, 0.38);
+  --color-dark-line:    rgba(255, 255, 255, 0.10);
+  --color-dark-line-soft: rgba(255, 255, 255, 0.06);
+
+
+  /* ----------------------------------------------------------
+     GLASS SYSTEM
+  ---------------------------------------------------------- */
+  --glass-bg:           rgba(255, 255, 255, 0.06);
+  --glass-bg-mid:       rgba(255, 255, 255, 0.10);
+  --glass-bg-light:     rgba(255, 255, 255, 0.86);
+  --glass-border:       rgba(255, 255, 255, 0.12);
+  --glass-border-strong: rgba(255, 255, 255, 0.20);
+  --glass-blur:         blur(22px);
+  --glass-blur-heavy:   blur(36px);
+
+
+  /* ----------------------------------------------------------
+     SEMANTIC COLORS
+  ---------------------------------------------------------- */
+  --color-success:      #10B981;
+  --color-success-soft: rgba(16, 185, 129, 0.12);
+  --color-warning:      #F59E0B;
+  --color-warning-soft: rgba(245, 158, 11, 0.12);
+  --color-danger:       #EF4444;
+  --color-danger-soft:  rgba(239, 68, 68, 0.12);
+  --color-info:         #3B82F6;
+  --color-info-soft:    rgba(59, 130, 246, 0.12);
+
+
+  /* ----------------------------------------------------------
+     SHADOWS
+  ---------------------------------------------------------- */
+  /* Light section shadows */
+  --shadow-xs:      0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-sm:      0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-card:    0 12px 36px rgba(15, 23, 42, 0.10);
+  --shadow-soft:    0 20px 60px rgba(15, 23, 42, 0.10);
+  --shadow-header:  0 8px 30px rgba(15, 23, 42, 0.10);
+
+  /* Brand glow shadows */
+  --shadow-brand:    0 14px 40px rgba(232, 57, 29, 0.32);
+  --shadow-brand-sm: 0 6px 20px rgba(232, 57, 29, 0.24);
+  --shadow-brand-lg: 0 24px 64px rgba(232, 57, 29, 0.36);
+
+  /* Dark/glass shadows */
+  --shadow-dark:    0 24px 60px rgba(0, 0, 0, 0.44);
+  --shadow-glass:   0 8px 32px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --shadow-glass-lg: 0 20px 60px rgba(0, 0, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+  ---------------------------------------------------------- */
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   22px;
+  --radius-xl:   30px;
+  --radius-2xl:  40px;
+  --radius-full: 999px;
+
+
+  /* ----------------------------------------------------------
+     SPACING — 4px base scale
+  ---------------------------------------------------------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-18: 72px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-28: 112px;
+  --space-32: 128px;
+
+
+  /* ----------------------------------------------------------
+     CONTAINERS
+  ---------------------------------------------------------- */
+  --container-narrow:  760px;
+  --container-default: 1120px;
+  --container-wide:    1280px;
+  --container-padding: 24px;
+
+
+  /* ----------------------------------------------------------
+     MOTION
+  ---------------------------------------------------------- */
+  --duration-instant: 80ms;
+  --duration-fast:    150ms;
+  --duration-base:    240ms;
+  --duration-slow:    480ms;
+  --duration-xslow:   720ms;
+
+  --ease-standard:  cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:   cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* ----------------------------------------------------------
+     Z-INDEX SCALE
+  ---------------------------------------------------------- */
+  --z-base:    1;
+  --z-above:   10;
+  --z-nav:     40;
+  --z-header:  50;
+  --z-modal:   60;
+  --z-toast:   70;
+  --z-skip:    100;
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Page Not Found — SwiftCart</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Head back to SwiftCart.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#064e3b">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/brand/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/brand/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/brand/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://api.fontshare.com">
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    /* ── 404 page-specific overrides ───────────────────────── */
+    body {
+      background: var(--color-surface);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .error-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-16) var(--space-5);
+    }
+
+    .error-inner {
+      text-align: center;
+      max-width: 520px;
+    }
+
+    /* Big 404 visual */
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(96px, 18vw, 160px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -6px;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-6);
+      user-select: none;
+    }
+
+    .error-icon {
+      font-size: 48px;
+      margin-bottom: var(--space-5);
+      display: block;
+      line-height: 1;
+    }
+
+    .error-heading {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-4);
+    }
+
+    .error-body {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-ink-muted);
+      margin-bottom: var(--space-8);
+      max-width: 40ch;
+      margin-inline: auto;
+    }
+
+    /* Quick links grid */
+    .error-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    .error-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-page);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition:
+        border-color var(--duration-fast) var(--ease-standard),
+        background   var(--duration-fast) var(--ease-standard),
+        transform    var(--duration-fast) var(--ease-standard);
+    }
+
+    .error-link:hover {
+      border-color: var(--color-brand);
+      background: var(--color-brand-soft);
+      transform: translateY(-2px);
+    }
+
+    .error-link-icon {
+      font-size: 20px;
+      margin-bottom: var(--space-1);
+    }
+
+    .error-link-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+
+    .error-link-sub {
+      font-size: 12px;
+      color: var(--color-ink-soft);
+    }
+
+    /* Back home button */
+    .error-cta {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .error-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script type="module" src="js/main.js"></script>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Page Not Found — SwiftCart">
+  <meta property="og:description" content="The page you're looking for doesn't exist. Head back to SwiftCart.">
+  <meta property="og:url" content="https://swiftcartapp.co/">
+  <meta property="og:site_name" content="SwiftCart">
+  <meta property="og:image" content="https://swiftcartapp.co/assets/images/og/homepage-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Page Not Found — SwiftCart">
+  <meta name="twitter:description" content="The page you're looking for doesn't exist. Head back to SwiftCart.">
+  <meta name="twitter:image" content="https://swiftcartapp.co/assets/images/og/homepage-og.jpg">
+</head>
+
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <header class="site-header" data-header>
+    <div class="container nav-shell">
+
+      <a class="brand" href="/" aria-label="SwiftCart — go to homepage">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-mark-letter">S</span>
+        </span>
+        <span class="brand-name">SwiftCart</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/vendors">Vendors</a>
+        <a href="/riders">Riders</a>
+        <a href="/contact">Support</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="nav-link" href="/contact">Contact</a>
+        <a class="button button--primary button--sm" href="/#app">Join SwiftCart</a>
+      </div>
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open navigation menu"
+        data-menu-button
+      >
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation" data-mobile-menu>
+    <a href="/">Home</a>
+    <a href="/vendors">Vendors</a>
+    <a href="/riders">Riders</a>
+    <a href="/contact">Support</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="/contact">Contact</a>
+    <a class="button button--primary" href="/#app">Join SwiftCart</a>
+  </div>
+
+
+  <!-- ══ MAIN ════════════════════════════════════════════════ -->
+  <main id="main" class="error-main">
+    <div class="error-inner">
+
+      <span class="error-icon" aria-hidden="true">📦</span>
+      <div class="error-code" aria-label="Error 404">404</div>
+
+      <h1 class="error-heading">This page doesn't exist</h1>
+      <p class="error-body">
+        Looks like this delivery went to the wrong address. The page you're
+        looking for has moved, been removed, or never existed.
+      </p>
+
+      <!-- Quick navigation cards -->
+      <nav class="error-links" aria-label="Quick links">
+
+        <a class="error-link" href="/">
+          <span class="error-link-icon" aria-hidden="true">🏠</span>
+          <span class="error-link-label">Homepage</span>
+          <span class="error-link-sub">Back to SwiftCart</span>
+        </a>
+
+        <a class="error-link" href="/contact">
+          <span class="error-link-icon" aria-hidden="true">💬</span>
+          <span class="error-link-label">Support Centre</span>
+          <span class="error-link-sub">Get help from our team</span>
+        </a>
+
+        <a class="error-link" href="/riders">
+          <span class="error-link-icon" aria-hidden="true">🛵</span>
+          <span class="error-link-label">Become a Rider</span>
+          <span class="error-link-sub">Apply to deliver with us</span>
+        </a>
+
+        <a class="error-link" href="/vendors">
+          <span class="error-link-icon" aria-hidden="true">🏪</span>
+          <span class="error-link-label">Partner with Us</span>
+          <span class="error-link-sub">List your store on SwiftCart</span>
+        </a>
+
+      </nav>
+
+      <div class="error-cta">
+        <a class="button button--primary" href="/">Take me home</a>
+        <a class="button button--outline" href="/contact">Contact support</a>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="SwiftCart home">
+            <span class="brand-mark" aria-hidden="true">
+              <span class="brand-mark-letter">S</span>
+            </span>
+            <span class="brand-name">SwiftCart</span>
+          </a>
+          <p class="footer-tagline">
+            A Nigerian local commerce and delivery marketplace,
+            launching first in Badagry, Lagos.
+          </p>
+          <span class="footer-location">
+            <span class="footer-location-dot" aria-hidden="true"></span>
+            Badagry, Lagos — Live
+          </span>
+        </div>
+
+        <div class="footer-col">
+          <h2>Platform</h2>
+          <a href="/#customers">Customer App</a>
+          <a href="/vendors">Vendor App</a>
+          <a href="/riders">Rider App</a>
+        </div>
+
+        <div class="footer-col">
+          <h2>Onboarding</h2>
+          <a href="/vendors">Partner with us</a>
+          <a href="/riders">Become a rider</a>
+        </div>
+
+        <div class="footer-col">
+          <h2>Support</h2>
+          <a href="/contact">Support centre</a>
+          <a href="/contact">Contact us</a>
+          <a href="mailto:support@swiftcartapp.co">support@swiftcartapp.co</a>
+        </div>
+
+        <div class="footer-col">
+          <h2>Legal</h2>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/vendor-terms">Vendor Terms</a>
+          <a href="/rider-terms">Rider Terms</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="footer-koyr">
+          SwiftCart is a product of Koyr <span class="heart" aria-label="with love">❤️</span>
+        </p>
+        <p>&copy; <span id="footer-year">2026</span> SwiftCart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const y = document.getElementById("footer-year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

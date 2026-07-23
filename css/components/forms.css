@@ -1,0 +1,226 @@
+/* ============================================================
+   SwiftCart — Form System
+   Shared across contact, support, onboarding pages.
+   Supports light and dark section contexts.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   FORM WRAPPER
+---------------------------------------------------------- */
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.form--compact {
+  gap: var(--space-4);
+}
+
+
+/* ----------------------------------------------------------
+   FORM FIELD
+---------------------------------------------------------- */
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.form-field label,
+.form-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+/* Dark section labels */
+.section--dark .form-label,
+.section--dark .form-field label {
+  color: var(--color-dark-muted);
+}
+
+
+/* ----------------------------------------------------------
+   INPUTS & TEXTAREAS
+---------------------------------------------------------- */
+.form-field input,
+.form-field textarea,
+.form-field select,
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow   var(--duration-fast) var(--ease-standard),
+    background   var(--duration-fast) var(--ease-standard);
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus,
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px var(--color-brand-glow-sm);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder,
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-ink-soft);
+  font-weight: 400;
+}
+
+/* Select arrow */
+.form-field select,
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.form-field textarea,
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Error state */
+.form-field--error input,
+.form-field--error textarea,
+.form-field--error select {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-soft);
+}
+
+/* Success state */
+.form-field--success input,
+.form-field--success textarea {
+  border-color: var(--color-success);
+}
+
+
+/* ----------------------------------------------------------
+   DARK SECTION INPUTS
+---------------------------------------------------------- */
+.form--dark .form-field input,
+.form--dark .form-field textarea,
+.form--dark .form-field select {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--color-dark-ink);
+}
+
+.form--dark .form-field input::placeholder,
+.form--dark .form-field textarea::placeholder {
+  color: var(--color-dark-soft);
+}
+
+.form--dark .form-field input:focus,
+.form--dark .form-field textarea:focus {
+  border-color: var(--color-brand);
+  background: var(--glass-bg-mid);
+}
+
+
+/* ----------------------------------------------------------
+   FORM HELP & STATUS
+---------------------------------------------------------- */
+.form-help {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+.form-status {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.form-status--success {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.form-status--error {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.form-status--loading {
+  background: var(--color-info-soft);
+  color: var(--color-info);
+}
+
+
+/* ----------------------------------------------------------
+   CHECKBOX & RADIO
+---------------------------------------------------------- */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.form-check input[type="checkbox"],
+.form-check input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius-xs);
+  background: var(--color-surface);
+  cursor: pointer;
+  accent-color: var(--color-brand);
+  margin-top: 2px;
+  padding: 0;
+}
+
+.form-check input[type="radio"] {
+  border-radius: 50%;
+}
+
+.form-check-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  line-height: 1.55;
+}
+
+.form-check-label a {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 57, 29, 0.3);
+  text-underline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------
+   REQUIRED INDICATOR
+---------------------------------------------------------- */
+.form-required {
+  color: var(--color-brand);
+  margin-left: 3px;
+}
