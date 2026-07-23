@@ -14,8 +14,29 @@
    ============================================================ */
 
 
+/* ── Design-system unification (2026-07-23) ─────────────────
+   The legal pages were rebranded onto the marketing system: they now carry
+   class="sc-page", load home.css, and use the marketing header/footer + real
+   logo. legal-pages.css AND components/legal.css both style the legal content
+   through DESIGN TOKENS, so remapping those tokens here (scoped to .sc-page,
+   which wins over the red :root defaults in tokens.css) re-skins ALL legal
+   content to the forest/lime palette + marketing fonts without touching the
+   component rules. Change palette here, not in the component files. */
+.sc-page {
+  --color-brand:          #064e3b;   /* forest — links, accents, headings */
+  --color-brand-soft:     #e6f1d8;   /* mint — badge / callout tints */
+  --color-ink:            #10211b;
+  --color-ink-muted:      #55645e;   /* 5.6:1 on white */
+  --color-ink-soft:       #5a6862;   /* 5.9:1 — was too light */
+  --color-ink-faint:      #63726b;   /* 5.1:1 — muted meta/breadcrumb text must still pass AA */
+  --color-line:           #dbe2dc;
+  --color-surface:        #ffffff;
+  --color-surface-raised: #f7f2e8;   /* sand */
+  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-sans:    "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
 /* ── Legal page background ──────────────────────────────── */
-/* Legal pages are light-mode — white background, dark text  */
 body {
   background-color: var(--color-surface);
 }
