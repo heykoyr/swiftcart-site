@@ -4,8 +4,8 @@
   "description": "One app for every shop near you, delivered by licensed local delivery companies across Nigeria.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#064e3b",
-  "theme_color": "#064e3b",
+  "background_color": "#fffdf8",
+  "theme_color": "#ff5a1f",
   "lang": "en-NG",
   "icons": [
     {

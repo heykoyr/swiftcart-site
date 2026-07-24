@@ -20,18 +20,18 @@
    logo. legal-pages.css AND components/legal.css both style the legal content
    through DESIGN TOKENS, so remapping those tokens here (scoped to .sc-page,
    which wins over the red :root defaults in tokens.css) re-skins ALL legal
-   content to the forest/lime palette + marketing fonts without touching the
+   content to the orange/warm palette + marketing fonts without touching the
    component rules. Change palette here, not in the component files. */
 .sc-page {
-  --color-brand:          #064e3b;   /* forest — links, accents, headings */
-  --color-brand-soft:     #e6f1d8;   /* mint — badge / callout tints */
-  --color-ink:            #10211b;
-  --color-ink-muted:      #55645e;   /* 5.6:1 on white */
-  --color-ink-soft:       #5a6862;   /* 5.9:1 — was too light */
-  --color-ink-faint:      #63726b;   /* 5.1:1 — muted meta/breadcrumb text must still pass AA */
-  --color-line:           #dbe2dc;
+  --color-brand:          #be3b08;   /* orange — links, accents (5.5:1 on white) */
+  --color-brand-soft:     #fff1ea;   /* soft peach — badge / callout tints */
+  --color-ink:            #2a2521;   /* warm near-black */
+  --color-ink-muted:      #6b6259;   /* 6:1 on white */
+  --color-ink-soft:       #6f6155;   /* ~5.2:1 */
+  --color-ink-faint:      #756a5c;   /* ~4.8:1 — muted meta/breadcrumb must still pass AA */
+  --color-line:           #efe7dd;
   --color-surface:        #ffffff;
-  --color-surface-raised: #f7f2e8;   /* sand */
+  --color-surface-raised: #fff3e4;   /* cream */
   --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
   --font-sans:    "DM Sans", system-ui, -apple-system, sans-serif;
 }
