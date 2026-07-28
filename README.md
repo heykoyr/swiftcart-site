@@ -115,11 +115,46 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
+## Configuration (before launch)
+
+Two integrations are wired but intentionally left blank so the site never
+tracks anyone or pretends to capture leads until you opt in. Both live at the
+top of [`js/main.js`](js/main.js).
+
+### 1. Forms → Formspree
+
+The coverage check (home hero) and the waitlist form (`contact.html`) submit by
+AJAX so the on-page confirmation toast is preserved.
+
+1. Create a form at **https://formspree.io** and copy its endpoint
+   (`https://formspree.io/f/xxxxxxxx`).
+2. Paste it into `FORMSPREE_ENDPOINT` in `js/main.js`.
+
+Both forms post to that one inbox; a `form_type` field distinguishes them
+(`coverage_check` vs `waitlist`) and `_subject` sets a readable email subject.
+The contact form includes a `_gotcha` honeypot for spam. **Until the endpoint
+is set, forms show the confirmation but do NOT send** (a console warning fires
+so it's caught before launch).
+
+### 2. Analytics
+
+Fill **one** field in the `ANALYTICS` object in `js/main.js`:
+
+- `ga` — a Google Analytics 4 id, `"G-XXXXXXXXXX"`. Free and ubiquitous, but
+  **sets cookies** (you may need a consent notice under the NDPA/GDPR).
+- `plausibleDomain` — your domain, `"swiftcartapp.co"`. Uses Plausible, which is
+  **cookieless** (no consent banner needed).
+
+Leave both empty to disable analytics. Custom events already fire on form
+success: `coverage_check` and `waitlist_signup`.
+
 ## Deploying
 
 Upload the repository contents to any static host or cPanel document root.
 `.htaccess` provides extensionless URLs and basic caching; `robots.txt` and
-`sitemap.xml` are included for SEO.
+`sitemap.xml` are included for SEO. All asset and internal-link paths are
+root-absolute (`/css/…`, `/js/…`, `/page.html`) so pages render correctly at
+any URL shape, including the trailing-slash clean URLs the `.htaccess` serves.
 
 ---
 
