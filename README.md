@@ -1,161 +1,97 @@
-# SwiftCart — Marketing Website
+# SwiftCart
 
-The public marketing site for **SwiftCart**, a nationwide consumer delivery
-marketplace in Nigeria. Customers use one SwiftCart app to order from nearby
-restaurants, pharmacies, supermarkets and more; independent, licensed local
-delivery companies fulfil every order with their own riders and payment
-accounts.
+### One app for every shop nearby — delivered by the licensed companies already operating in your city.
 
-**Live:** https://swiftcartapp.co · **A product of Koyr.**
+**SwiftCart is a nationwide consumer delivery marketplace for Nigeria, and the software platform that runs it.** Customers order from nearby restaurants, pharmacies and supermarkets in a single app; independent, licensed local delivery companies fulfil every order with their own riders and their own payment accounts.
 
-This repository is the static, dependency-free website only. The SwiftCart
-apps (customer, vendor, rider, admin) live in separate repositories.
+I designed and built the whole thing solo — the product strategy, four mobile apps, a multi-tenant backend, the brand, and this website.
+
+**Live:** [swiftcartapp.co](https://swiftcartapp.co) · Currently in pre-launch.
+
+> *This repository is the public marketing website. It's the front door to a much larger system — the story below is what it's the door to.*
 
 ---
 
-## What's in here
+## The problem, and the pivot that became the business model
 
-| Page | File | Purpose |
-|------|------|---------|
-| Home | `index.html` | Marketplace pitch, how it works, FAQs |
-| Customers | `customers.html` | For people ordering |
-| Delivery companies | `companies.html` | For operators licensing the platform |
-| Vendors | `vendors.html` | For shops selling on SwiftCart |
-| Riders | `riders.html` | For delivery riders |
-| Contact | `contact.html` | Waitlist + enquiry form |
-| Legal | `privacy.html`, `terms.html`, `vendor-terms.html`, `rider-terms.html` | Policies |
-| Account deletion | `delete-account.html` | Google Play data-deletion route |
-| Not found | `404.html` | Error page |
+Running a delivery marketplace nationwide normally means one company obtaining the operating licences and payment infrastructure to move money and dispatch riders across the country. For a solo founder, that's a wall.
 
-## Tech
+So SwiftCart turns the wall into the model. The delivery companies that **already hold those licences and payment accounts** become the fulfilment layer. SwiftCart provides the consumer brand, the marketplace customers love, and the software that runs operations. Each company plugs in its own riders and its own Paystack account, sets its own commission and delivery rates, and keeps its own economics.
 
-- **Plain HTML, CSS and vanilla JS (ES modules).** No framework, no build step,
-  no runtime dependencies — it deploys to any static host / cPanel as-is.
-- **Fonts:** Space Grotesk (display) + DM Sans (body), via Google Fonts.
-- **Node is used only offline** to regenerate brand raster assets (see below).
+The constraint became the moat: instead of a capital-heavy logistics operation, SwiftCart is a **software platform licensed to the operators** — earning from subscriptions and commission, never from touching order money.
 
-## Project structure
+## What it actually is
 
+Not one app — a four-sided platform, each side a full product:
+
+| | |
+|---|---|
+| 🛍️ **Customer app** | One nationwide storefront. Browse nearby shops, pay, live-track the rider, earn loyalty. Always SwiftCart-branded. |
+| 🏪 **Vendor app** | For every shop: orders, inventory, promotions and payouts. |
+| 🛵 **Rider app** | Jobs, a guided delivery flow, clear take-home earnings and withdrawals — **white-labelled** to the company each rider works for. |
+| ⚙️ **Admin app** | One app, two faces: a **company console** (each operator sees only their own data) and a **super-admin console** (the platform owner, across every company). |
+| 🌐 **Marketing site** | The public front — *this repository*. |
+
+*(The apps live in their own repositories: [customer](https://github.com/heykoyr/SwiftCart-customer) · [vendor](https://github.com/heykoyr/SwiftCart-vendor) · [rider](https://github.com/heykoyr/SwiftCart-rider) · [admin](https://github.com/heykoyr/SwiftCart-admin).)*
+
+## What building it involved
+
+**Product thinking**
+- Reframing a licensing blocker into a SaaS licensing model — turning "we can't get a licence" into "we don't need one; we license the software to the people who have them."
+- A tenancy model where **role** (what you're allowed to do) and **scope** (whose data you can see) are deliberately separate ideas — so the same admin app safely serves both a single company and the platform owner.
+- A money model that never pools order funds: each company's payments land in its own account; balances are ledgers, not a shared pot.
+
+**Product design**
+- One coherent brand and design system, from the app icon through to this site — orange-led, warm and playful, with a real logo carried consistently across favicons, PWA icons and social cards.
+- **Accessible by default.** Every page of this site meets **WCAG 2.1 AA** contrast, with visible keyboard focus, a skip link, reduced-motion support, and content that renders even with JavaScript off. Colours were solved against the contrast formula *before* use and re-verified page-by-page.
+- Attention to the unglamorous details that make a product feel finished: consistent navigation and footer, honest microcopy, graceful empty and error states.
+
+**Product engineering**
+- A multi-tenant system that keeps every company's data, money and people cleanly separated — verified by actually impersonating each role and checking what leaks, not by trusting the rules on paper.
+- A fast, framework-free, dependency-free marketing site that deploys to any static host as-is and renders correctly at any URL shape.
+- Shipping end to end and solo: strategy → design → build → deploy, across five codebases.
+
+---
+
+## About this repository (the website)
+
+Hand-built, **no framework, no build step, no runtime dependencies** — plain HTML, CSS and vanilla ES-module JavaScript. It deploys to any static host or cPanel document root as-is.
+
+### Pages
+`index` · `customers` · `companies` · `vendors` · `riders` · `contact` · `privacy` · `terms` · `vendor-terms` · `rider-terms` · `delete-account` · `404`
+
+### Structure
 ```
-├── *.html                     # pages (see table above)
+├── *.html                # pages
 ├── css/
-│   ├── main.css               # entry — @imports base, layout, components, utilities
-│   ├── base/                  # tokens, reset, typography, animations
-│   ├── layout/                # grid, header, footer, sections
-│   ├── components/            # buttons, cards, accordions, steps, forms, legal…
-│   └── pages/
-│       ├── home.css           # the marketing design system (colours live here)
-│       └── legal-pages.css    # legal-page layout + palette remap
+│   ├── main.css           # entry (@imports base, layout, components, utilities)
+│   ├── base/ layout/ components/
+│   └── pages/home.css     # the design system — palette lives here
 ├── js/
-│   ├── main.js                # boot: nav, reveal, FAQ, toasts, forms, year
-│   └── modules/               # nav, reveal, accordions, toc, forms, toast, dom
-├── assets/images/
-│   ├── brand/                 # logo.png (source), favicon.svg, PWA/apple icons
-│   └── og/                    # 1200×630 social share image
-├── manifest.json  robots.txt  sitemap.xml  .htaccess
+│   ├── main.js            # boot + site config (forms, analytics)
+│   └── modules/           # nav, reveal, accordions, toc, analytics, dom…
+├── assets/images/brand/   # logo.png (source) → favicons + PWA icons
+├── assets/images/og/      # 1200×630 social card
+└── manifest.json  robots.txt  sitemap.xml  .htaccess
 ```
 
-## Design system
+### Design system
+Orange (`#ff5a1f`, straight from the logo) is the brand; green and yellow are the playful accents; backgrounds are cream and soft tints with a single deep-green footer as the anchor. The palette is defined once as CSS custom properties at the top of `css/pages/home.css`; legal pages inherit it through a token remap. The brand mark lives at `assets/images/brand/logo.png` (512×512) and every icon and the social card are generated from it with [sharp](https://sharp.pixelplumbing.com/).
 
-The website is **orange-led, light and warm**. Orange is the brand (it comes
-straight from the app logo); green and yellow are the playful supporting
-accents; backgrounds are cream and soft tints, with a single deep-green footer
-as the anchor.
-
-The palette is defined once as CSS custom properties at the top of
-`css/pages/home.css`. Legal pages inherit it through a token remap in
-`css/pages/legal-pages.css`.
-
-| Role | Colour | Notes |
-|------|--------|-------|
-| Brand orange | `#ff5a1f` | Logo, decorative fills. Never small text (too light). |
-| Orange text | `#be3b08` | Links, eyebrows, the accent word in headings. |
-| Orange button | `#d93900` | Primary button surface (white text, 4.6:1). |
-| Ink | `#2a2521` | Headings and body. |
-| Muted | `#6b6259` | Secondary text. |
-| Green | `#0e5a37` / `#0a472b` | Footer anchor, the company card, icon accents. |
-| Yellow | `#ffc63d` | Sunny accent — eyebrow dots, the customer card, footer headings. |
-| Paper / cream / mint | `#fffdf8` / `#fff3e4` / `#e6f6ec` | Page + soft section backgrounds. |
-
-### Accessibility (WCAG 2.1 AA)
-
-Accessibility is a hard requirement, not an afterthought:
-
-- **Contrast:** every text/background pair meets AA (≥4.5:1 normal, ≥3:1 large).
-  Colours were solved against the formula before use, and every page is
-  re-checked with a compositing-aware audit (it walks translucent layers and
-  skips decorative `aria-hidden` art) — all pages pass with zero failures.
-- **Keyboard:** a visible focus ring on every interactive element, plus a
-  "Skip to main content" link.
-- **Motion:** reveal animations and transitions collapse under
-  `prefers-reduced-motion`.
-- **Content without JS:** pages render fully even if scripting is unavailable.
-- Decorative CSS illustrations are hidden from screen readers.
-
-## Brand assets
-
-`assets/images/brand/logo.png` (512×512) is the **source of truth** for the
-mark. Everything else is generated from it with [sharp](https://sharp.pixelplumbing.com/):
-
-- `favicon.svg` (an inline data-URI of the logo), `favicon-96.png`
-- `apple-touch-icon.png` (180), `favicon-192.png`, `favicon-512.png` (full-bleed, maskable)
-- `assets/images/og/homepage-og.{png,jpg}` (1200×630 social card)
-
-To regenerate after replacing the logo, install `sharp` (`npm i sharp`) and run
-the small generation script used in development; icons and the OG image derive
-from the one PNG.
-
-## Running locally
-
-No build — just serve the folder over HTTP (module scripts need a server, not
-`file://`):
-
+### Run it locally
 ```bash
-python3 -m http.server 8000
-# then open http://localhost:8000
+python3 -m http.server 8000   # module scripts need HTTP, not file://
 ```
 
-## Configuration (before launch)
+### Configure before launch
+Two integrations sit at the top of `js/main.js`, deliberately blank so nothing tracks anyone or fakes a signup until you opt in:
 
-Two integrations are wired but intentionally left blank so the site never
-tracks anyone or pretends to capture leads until you opt in. Both live at the
-top of [`js/main.js`](js/main.js).
+- **Forms → Formspree.** The coverage check and waitlist form submit by AJAX (keeping the on-page toast). Paste your endpoint into `FORMSPREE_ENDPOINT`; both forms share one inbox and are distinguished by a `form_type` field, with a `_gotcha` honeypot for spam. *Until it's set, forms confirm but don't send, and log a console warning.*
+- **Analytics.** Fill one of `ANALYTICS = { ga, plausibleDomain }` — GA4 (cookie-based) or Plausible (cookieless). Form success fires `coverage_check` / `waitlist_signup` events.
 
-### 1. Forms → Formspree
-
-The coverage check (home hero) and the waitlist form (`contact.html`) submit by
-AJAX so the on-page confirmation toast is preserved.
-
-1. Create a form at **https://formspree.io** and copy its endpoint
-   (`https://formspree.io/f/xxxxxxxx`).
-2. Paste it into `FORMSPREE_ENDPOINT` in `js/main.js`.
-
-Both forms post to that one inbox; a `form_type` field distinguishes them
-(`coverage_check` vs `waitlist`) and `_subject` sets a readable email subject.
-The contact form includes a `_gotcha` honeypot for spam. **Until the endpoint
-is set, forms show the confirmation but do NOT send** (a console warning fires
-so it's caught before launch).
-
-### 2. Analytics
-
-Fill **one** field in the `ANALYTICS` object in `js/main.js`:
-
-- `ga` — a Google Analytics 4 id, `"G-XXXXXXXXXX"`. Free and ubiquitous, but
-  **sets cookies** (you may need a consent notice under the NDPA/GDPR).
-- `plausibleDomain` — your domain, `"swiftcartapp.co"`. Uses Plausible, which is
-  **cookieless** (no consent banner needed).
-
-Leave both empty to disable analytics. Custom events already fire on form
-success: `coverage_check` and `waitlist_signup`.
-
-## Deploying
-
-Upload the repository contents to any static host or cPanel document root.
-`.htaccess` provides extensionless URLs and basic caching; `robots.txt` and
-`sitemap.xml` are included for SEO. All asset and internal-link paths are
-root-absolute (`/css/…`, `/js/…`, `/page.html`) so pages render correctly at
-any URL shape, including the trailing-slash clean URLs the `.htaccess` serves.
+### Deploy
+Upload the repo contents to the document root. `.htaccess` handles clean URLs, caching and security headers; `robots.txt` and `sitemap.xml` are included. All asset and link paths are root-absolute, so pages render correctly at any URL shape.
 
 ---
 
-© SwiftCart. Built for customers. Powered by local operators. A product of Koyr.
+Designed & built by **Adekoya Oluwafemi A.** — SwiftCart is a product of **Koyr**.
