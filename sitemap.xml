@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://swiftcartapp.co/</loc><lastmod>2026-07-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://swiftcartapp.co/customers.html</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://swiftcartapp.co/companies.html</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://swiftcartapp.co/vendors.html</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://swiftcartapp.co/riders.html</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://swiftcartapp.co/contact.html</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://swiftcartapp.co/privacy.html</loc><lastmod>2026-07-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://swiftcartapp.co/terms.html</loc><lastmod>2026-07-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://swiftcartapp.co/vendor-terms.html</loc><lastmod>2026-07-23</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://swiftcartapp.co/rider-terms.html</loc><lastmod>2026-07-23</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://swiftcartapp.co/</loc><lastmod>2026-07-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://swiftcartapp.co/customers</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://swiftcartapp.co/companies</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://swiftcartapp.co/vendors</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://swiftcartapp.co/riders</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://swiftcartapp.co/contact</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://swiftcartapp.co/delete-account</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://swiftcartapp.co/privacy</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://swiftcartapp.co/terms</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://swiftcartapp.co/vendor-terms</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://swiftcartapp.co/rider-terms</loc><lastmod>2026-07-29</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>

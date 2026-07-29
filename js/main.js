@@ -18,7 +18,7 @@ import { qs } from "./modules/dom.js";
       domain for Plausible (cookieless, no consent banner). Leave both
       empty to disable analytics entirely.
    ════════════════════════════════════════════════════════════════════════ */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgogdern";
 const ANALYTICS = { ga: "", plausibleDomain: "" };
 
 initAnalytics(ANALYTICS);
