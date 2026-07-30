@@ -23,7 +23,7 @@
    content to the orange/warm palette + marketing fonts without touching the
    component rules. Change palette here, not in the component files. */
 .sc-page {
-  --color-brand:          #be3b08;   /* orange — links, accents (5.5:1 on white) */
+  --color-brand:          #cd3600;   /* orange — links, accents (5.5:1 on white) */
   --color-brand-soft:     #fff1ea;   /* soft peach — badge / callout tints */
   --color-ink:            #2a2521;   /* warm near-black */
   --color-ink-muted:      #6b6259;   /* 6:1 on white */
