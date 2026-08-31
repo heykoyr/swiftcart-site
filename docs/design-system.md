@@ -1,10 +1,24 @@
 # SwiftCart Website — Design System Reference
-**Version 2.0 — Revamp Edition**
-**Phase 1 Complete**
+
+> ## ⚠️ Superseded — kept for history
+>
+> This document describes an **earlier visual direction** that was explored and then
+> replaced: dark hero sections, red gradient orbs, and Clash Display headings.
+>
+> **The shipped site looks nothing like this.** The current direction is warm and
+> light — forest green, sunny yellow and brand orange on cream — with Space Grotesk
+> headings and DM Sans body text.
+>
+> **The source of truth is the palette block at the top of
+> [`css/pages/home.css`](../css/pages/home.css)**, where every colour token is
+> annotated with its measured WCAG contrast ratio and the roles it is allowed to
+> carry. See also the design-system summary in the [README](../README.md).
+>
+> Nothing below should be used as guidance for the current site.
 
 ---
 
-## 1. Design Direction
+## 1. Design Direction *(historical)*
 
 **Personality:** Bold gradient, modern startup energy. Premium without being generic. Locally relevant, operationally serious.
 

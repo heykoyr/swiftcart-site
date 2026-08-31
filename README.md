@@ -18,7 +18,7 @@ Running a delivery marketplace nationwide normally means one company obtaining t
 
 So SwiftCart turns the wall into the model. The delivery companies that **already hold those licences and payment accounts** become the fulfilment layer. SwiftCart provides the consumer brand, the marketplace customers love, and the software that runs operations. Each company plugs in its own riders and its own Paystack account, sets its own commission and delivery rates, and keeps its own economics.
 
-The constraint became the moat: instead of a capital-heavy logistics operation, SwiftCart is a **software platform licensed to the operators** — earning from subscriptions and commission, never from touching order money.
+The constraint became the moat: instead of a capital-heavy logistics operation, SwiftCart is a **software platform licensed to the operators** — earning from fixed company subscriptions, taking no cut of any order and never touching customer money.
 
 ## What it actually is
 
@@ -32,7 +32,9 @@ Not one app — a four-sided platform, each side a full product:
 | ⚙️ **Admin app** | One app, two faces: a **company console** (each operator sees only their own data) and a **super-admin console** (the platform owner, across every company). |
 | 🌐 **Marketing site** | The public front — *this repository*. |
 
-*(The apps live in their own repositories: [customer](https://github.com/heykoyr/SwiftCart-customer) · [vendor](https://github.com/heykoyr/SwiftCart-vendor) · [rider](https://github.com/heykoyr/SwiftCart-rider) · [admin](https://github.com/heykoyr/SwiftCart-admin).)*
+**→ [The full SwiftCart story](https://github.com/heykoyr/swiftcart)** — the platform overview, the case study behind the architecture, and the design system.
+
+*(The apps live in their own repositories — [customer](https://github.com/heykoyr/SwiftCart-customer) · [vendor](https://github.com/heykoyr/SwiftCart-vendor) · [rider](https://github.com/heykoyr/SwiftCart-rider) · [admin](https://github.com/heykoyr/SwiftCart-admin) — all private, as it's a launching product.)*
 
 ## What building it involved
 
