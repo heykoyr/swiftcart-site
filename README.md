@@ -16,7 +16,7 @@ I designed and built the whole thing solo — the product strategy, four mobile 
 
 Running a delivery marketplace nationwide normally means one company obtaining the operating licences and payment infrastructure to move money and dispatch riders across the country. For a solo founder, that's a wall.
 
-So SwiftCart turns the wall into the model. The delivery companies that **already hold those licences and payment accounts** become the fulfilment layer. SwiftCart provides the consumer brand, the marketplace customers love, and the software that runs operations. Each company plugs in its own riders and its own Paystack account, sets its own commission and delivery rates, and keeps its own economics.
+So SwiftCart turns the wall into the model. The delivery companies that **already hold those licences and payment accounts** become the fulfilment layer. SwiftCart provides the consumer brand, the marketplace customers love, and the software that runs operations. Each company brings its own riders and payment account, sets its own commission and delivery rates, and keeps its own economics.
 
 The constraint became the moat: instead of a capital-heavy logistics operation, SwiftCart is a **software platform licensed to the operators** — earning from fixed company subscriptions, taking no cut of any order and never touching customer money.
 
